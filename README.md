@@ -3,7 +3,7 @@
 The objective is to build a movie recommendation application where users can browse trending movies and receive recommendations tailored to their preferences. The project showcases dynamic routing, local data storage, and interactive UI design to deliver an engaging user experience.
 
 ## Tech stack
-- Next.js (React) with TypeScript integration.
+- Next.js v16 (React) with TypeScript integration.
 - Tailwind CSS v4.
 - Using figma for UI/UX design.
 
