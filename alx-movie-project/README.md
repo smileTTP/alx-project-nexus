@@ -2,12 +2,33 @@
 
 The objective is to build a movie recommendation application where users can browse trending movies and receive recommendations tailored to their preferences. The project showcases dynamic routing, local data storage, and interactive UI design to deliver an engaging user experience.
 
-## Tech stack
-- Next.js v16 (React) with TypeScript integration.
-- Tailwind CSS v4.
-- Using figma for UI/UX design.
-- TMDB API v3
+## Project Goals
+The primary objectives of the movie recommendation app are:
 
-## API Overview
-[TMDB API v3](https://developer.themoviedb.org/reference/getting-started) is a RESTful web service that offers access to detailed information about movies, TV shows, actors, directors and related content. It provides reviews, ratings, plot summaries, high-quality images/videos and more. It enables search via different categories (title, actor, genre, release year, etc) and supports multiple languages. This api provides complete and updated data for over 9 million titles (movies, series and episodes) and 11 million actors/crew and cast members.
+#### Dynamic Routing
+- Implement dynamic routing using Next.js for detailed movie pages.
+#### User Personalization
+- Enable users to save their favorite movies locally or via an API.
+#### Interactive Dashboard
+- Build a responsive and visually appealing movie dashboard for browsing and recommendations.
+
+## Technologies Used
+- Next.js / React Native: For server-side rendering and dynamic routing.
+- TypeScript: To ensure type safety and scalable development.
+- Styled Components: For creating reusable, styled UI components.
+
+## Key Features
+1. API Integration
+- Fetch and display trending and recommended movies using a public movie API.
+Implement proper error handling and loading states during API calls.
+2. Dynamic Routing
+- Create detailed pages for individual movies using Next.js dynamic routing.
+Ensure fast navigation and optimized rendering of movie details.
+3. Save Favorite Movies
+Allow users to save their favorite movies locally using local storage or via an API backend.
+Implement a favorites section on the dashboard to manage and view saved movies.
+4. Responsive and Interactive UI
+- Design a movie dashboard featuring trending and recommended movies.
+Use media queries to ensure the app is fully responsive across devices.
+Provide smooth interactions, including hover effects and animations for movie cards.
 
