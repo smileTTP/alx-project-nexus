@@ -10,10 +10,10 @@ const Footer: React.FC = () => {
                 <a href="https://figma.com" rel="figma">
                 <Image src={'/assets/figma.svg'} alt="figma" width={40} height={60} className="w-4 md:w-10"/>
                 </a>
-                <a href="https://github.com" rel="github">
+                <a href="https://github.com/smileTTP" rel="github">
                 <Image src={'/assets/github.svg'} alt="figma" width={55} height={80} className="w-6 md:w-[55px]"/>
                 </a>
-                <a href="https://x.com" rel="github">
+                <a href="https://x.com/ibtissam7_" rel="github">
                 <Image src={'/assets/twitter.svg'} alt="figma" width={55} height={80} className="w-6 md:w-[55px]"/>
                 </a>
             </div>
