@@ -7,6 +7,7 @@ import { useState } from "react";
 const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [isMoviesOpen, setIsMoviesOpen] = useState(false);
 
     const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -16,6 +17,16 @@ const Header: React.FC = () => {
         setIsSearchOpen(!isSearchOpen);
         if (isMenuOpen) setIsMenuOpen(false);
     }
+
+    const movieOptions = [
+        { name: "Action", path: "/movies/latest" },
+        { name: "Comedy", path: "/movies/popular" },
+        { name: "Drama", path: "/movies/toprated" },
+        { name: "Horror", path: "/movies/upcoming" },
+    ];
+    const toggleMovies = () => {
+        setIsMoviesOpen(!isMoviesOpen);
+    };
 
     return (
         <header className="bg-[#96D9C0] p-4 sticky w-full">
@@ -59,12 +70,12 @@ const Header: React.FC = () => {
             )}
 
             {isSearchOpen && (
-        <div className="top-full left-0 w-full p-4 flex justify-center items-center">
+            <div className="top-full left-0 w-full p-4 flex justify-center items-center">
             <div className="relative w-full max-w-3xl">
             <input type="text" placeholder="Search for a movie" className="w-full p-3 pl-4 rounded-full border-2 border-[#4C3A51] bg-[#f1d7de] text-[#4C3A51] text-xl" />
             <CiSearch className="absolute right-4 top-1/2 -translate-y-1/2 text-[#4C3A51] text-3xl" />
             </div>
-        </div>
+            </div>
         )}
         </header>
     )
