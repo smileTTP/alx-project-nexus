@@ -11,3 +11,14 @@ The objective is to build a movie recommendation application where users can bro
 ## API Overview
 [TMDB API v3](https://developer.themoviedb.org/reference/getting-started) is a RESTful web service that offers access to detailed information about movies, TV shows, actors, directors and related content. It provides reviews, ratings, plot summaries, high-quality images/videos and more. It enables search via different categories (title, actor, genre, release year, etc) and supports multiple languages. This api provides complete and updated data for over 9 million titles (movies, series and episodes) and 11 million actors/crew and cast members.
 
+## Color Styles
+- Primary Color #591427
+- Secondary Color #4C3A51
+- Background #96D9C0
+- #D27C91
+- #8080FF
+- #7B1B38
+
+## Typography
+- Black Han Sans
+- Space Grotesk
