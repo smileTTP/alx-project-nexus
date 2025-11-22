@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Footer: React.FC = () => {
     return (
-        <footer className="h-60 w-full">
+        <footer className="h-60 w-full bottom-0">
             <div className="h-10 bg-[#96D9C0]"></div>
             <div className="bg-[#D27C91]">
             <div className="h-[200px] flex space-x-10 justify-center items-center">

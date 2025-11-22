@@ -31,7 +31,7 @@ const Header: React.FC = () => {
     };
 
     return (
-        <header className="bg-[#96D9C0] p-4 sticky w-full">
+        <header className="bg-[#96D9C0] p-4 sticky w-full top-0 z-50">
             <nav className="flex justify-between items-center p-4 mx-auto">
             <div className="px-4"><Image src={'/assets/LOGO.svg'} alt="PELLICLA" height={50} width={200} className="w-[150px] md:w-[200px]"/></div>
             <div className="hidden md:flex space-x-10 items-center">
