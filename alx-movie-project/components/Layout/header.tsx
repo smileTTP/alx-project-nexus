@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CiSearch } from "react-icons/ci";
-import { IoIosMenu, IoIosClose } from "react-icons/io";
+import { IoIosMenu, IoIosClose, IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
 
 const Header: React.FC = () => {
@@ -16,16 +16,18 @@ const Header: React.FC = () => {
     const toggleSearch = () => {
         setIsSearchOpen(!isSearchOpen);
         if (isMenuOpen) setIsMenuOpen(false);
+        if (isMoviesOpen) setIsMoviesOpen(false);
     }
 
     const movieOptions = [
-        { name: "Action", path: "/movies/latest" },
-        { name: "Comedy", path: "/movies/popular" },
-        { name: "Drama", path: "/movies/toprated" },
-        { name: "Horror", path: "/movies/upcoming" },
+        { name: "Latest", path: "/movies/latest" },
+        { name: "Popular", path: "/movies/popular" },
+        { name: "Top Rated", path: "/movies/toprated" },
+        { name: "Upcoming", path: "/movies/upcoming" },
     ];
     const toggleMovies = () => {
         setIsMoviesOpen(!isMoviesOpen);
+        if (isSearchOpen) setIsSearchOpen(false);
     };
 
     return (
@@ -34,13 +36,28 @@ const Header: React.FC = () => {
             <div className="px-4"><Image src={'/assets/LOGO.svg'} alt="PELLICLA" height={50} width={200} className="w-[150px] md:w-[200px]"/></div>
             <div className="hidden md:flex space-x-10 items-center">
                 <Link href="/" className="hover:text-[#591427]">
-                <p className="text-[#4C3A51] text-[30px]">Home</p>
+                <p className="text-[#4C3A51] text-[30px] hover:text-[#591427]">Home</p>
                 </Link>
-                <p className="text-[#4C3A51] text-[30px]">Movies</p>
-                <p className="text-[#4C3A51] text-[30px]">Dashboard</p>
+                <div className="relative">
+                <button onClick={toggleMovies} className="text-[#4C3A51] text-[30px] hover:text-[#591427]">Movies</button>
+                {isMoviesOpen && (
+                <div className="absolute top-full left-0 mt-2 w-48 bg-[#f1d7de] rounded-lg shadow-lg border-2 border-[#4C3A51] py-2 z-50">
+                    {movieOptions.map((option) => (
+                    <Link  key={option.name} href={option.path} onClick={() => setIsMoviesOpen(false)}>
+                    <p className="block px-4 py-2 text-[#4C3A51] text-xl hover:bg-[#4C3A51] hover:text-[#f1d7de] transition-colors">
+                    {option.name}
+                    </p>
+                    </Link> 
+                    ))} 
+                </div> 
+                )}
+                </div>
+                <Link href="/">
+                <p className="text-[#4C3A51] text-[30px] hover:text-[#591427]">Dashboard</p>
+                </Link>
             </div>
             <div className="flex items-center space-x-10 px-4">
-                <button onClick={toggleSearch} className="text-[#4C3A51] focus:outline-none">
+                <button onClick={toggleSearch} className="text-[#4C3A51]">
                 {isSearchOpen ? (
                 <IoIosClose className="text-[#4C3A51] text-5xl" />
                 ) : (
@@ -62,10 +79,27 @@ const Header: React.FC = () => {
                 <p className="block text-[#D27C91] text-[24px] py-2 border-b border-[#96D9C0]/10 hover:text-[#8080FF] rounded px-2 cursor-pointer">
                 Home</p>
             </Link>
-            <p className="block text-[#D27C91] text-[24px] py-2 border-b border-[#96D9C0]/10 hover:text-[#8080FF] rounded px-2 cursor-pointer">
-            Movies</p>
+            <div>
+                <div onClick={toggleMovies} className="flex justify-between items-center text-[#D27C91] text-[24px] py-2 border-b border-[#96D9C0]/10 hover:text-[#8080FF] rounded px-2 cursor-pointer">
+                Movies
+                <IoIosArrowDown className={`transition-transform duration-200 ${isMoviesOpen ? 'rotate-180' : ''}`} />
+                </div>
+                {isMoviesOpen && (
+                <div className="bg-[#3a2c3e] rounded-md mt-1 py-2 pl-6">
+                    {movieOptions.map((option) => (
+                    <Link key={option.name} href={option.path} onClick={() => { setIsMoviesOpen(false); setIsMenuOpen(false); }}>
+                        <p className="text-[#f1d7de] text-[20px] py-1 hover:text-[#8080FF]">
+                            {option.name}
+                        </p>
+                    </Link>
+                    ))}
+                </div>
+                )}
+                </div>
+            <Link href="/">
             <p className="block text-[#D27C91] text-[24px] py-2 border-[#96D9C0]/10 hover:text-[#8080FF] rounded px-2 cursor-pointer">
             Dashboard</p>
+            </Link>
             </div>
             )}
 
