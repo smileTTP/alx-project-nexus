@@ -3,8 +3,8 @@ import Image from "next/image";
 
 const Footer: React.FC = () => {
     return (
-        <footer className="h-[250px] w-full">
-            <div className="h-[50px] bg-[#96D9C0]"></div>
+        <footer className="h-60 w-full">
+            <div className="h-10 bg-[#96D9C0]"></div>
             <div className="h-[200px] bg-[#D27C91] flex space-x-10 justify-center items-center">
                 <Image src={'/assets/LOGO.svg'} alt="PELLICLA" height={50} width={300} className="w-[150px] md:w-[300px]"/>
                 <a href="https://figma.com" rel="figma">
