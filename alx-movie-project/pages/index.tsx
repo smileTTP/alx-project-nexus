@@ -7,7 +7,7 @@ const blackhansans = Black_Han_Sans({
 export default function Home() {
   return (
     <div className="flex items-center justify-center">
-      <main className="flex w-full max-w-full bg-[#591427] flex-col">
+      <main className="flex w-full max-w-full flex-col">
         <div className="bg-[#96D9C0] w-full h-[560px] flex items-center justify-center">
         <p className={`${blackhansans.className} text-[95px] md:text-[150px] text-[#4C3A51] text-center `}>
           PICTURA MOVENS
