@@ -22,3 +22,19 @@ The objective is to build a movie recommendation application where users can bro
 ## Typography
 - Black Han Sans
 - Space Grotesk
+
+## Planned Components
+1. Navbar 
+   - Logo
+   - Menu
+   - Search Icon
+2. Movie Card
+   - Movie Poster
+   - Movie Name
+   - Movie Genre
+3. Footer
+   - Logo
+   - Figma Link
+   - Github Link
+   - Twitter Link
+   - Copyright Info
