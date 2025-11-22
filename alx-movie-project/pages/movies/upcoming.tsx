@@ -1,7 +1,7 @@
 
 const Upcoming: React.FC = () => {
     return(
-        <div>
+        <div className="w-full bg-[#591427]">
 
         </div>
     )
