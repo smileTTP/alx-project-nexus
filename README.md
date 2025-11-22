@@ -18,6 +18,7 @@ The objective is to build a movie recommendation application where users can bro
 - #D27C91
 - #8080FF
 - #7B1B38
+- #f1d7de
 
 ## Typography
 - Black Han Sans
