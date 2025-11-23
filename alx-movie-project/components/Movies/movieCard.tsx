@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { FaStar } from "react-icons/fa";
 
 const MovieCard: React.FC = () => {
     return (
@@ -9,7 +10,10 @@ const MovieCard: React.FC = () => {
             </div>
             <div className="px-2 mt-2">
             <p className="text-[#96D9C0] font-bold text-base">Pearl (2022)</p>
+            <div className="flex justify-between">
             <p className="text-[#D27C91] text-sm">Horror, Triller</p>
+            <FaStar className="text-orange-300" />
+            </div>
             </div>
         </div>
     )
