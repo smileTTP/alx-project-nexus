@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
             </div>
             <br/>
             <hr className="text-[#7B1B38]"/>
-            <div className="text-[16px] py-4 px-4 text-[#7B1B38] font-semibold">© 2025 Ibtissam. All rights reserved.</div>
+            <div className="text-[16px] py-4 px-4 text-[#7B1B38] font-semibold">© 2025 Ibtissam. All rights reserved. <a href="https://developer.themoviedb.org/docs/getting-started" className="text-[#4C3A51]">TMDB API</a></div>
             </div>
         </footer>
     )
