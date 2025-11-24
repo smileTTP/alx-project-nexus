@@ -1,4 +1,4 @@
-import MoviesList from "@/components/Movies/moviesList";
+import MoviesList from "@/components/movies/moviesList";
 
 const Latest: React.FC = () => {
     return(
