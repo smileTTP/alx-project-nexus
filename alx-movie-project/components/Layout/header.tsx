@@ -34,6 +34,7 @@ const Header: React.FC = () => {
     }
 
     const movieOptions = [
+        { name: "All", path: "/movies/allmovies" },
         { name: "Popular", path: "/movies/popular" },
         { name: "Upcoming", path: "/movies/upcoming" },
         { name: "Top Rated", path: "/movies/toprated" },
