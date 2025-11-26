@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback } from 'react';
-import MovieCard from "@/components/movies/movieCard";
 import { Genre, MovieProps } from "@/interfaces";
 import Loading from '@/components/common/loading';
 import Button from '@/components/common/button';
@@ -14,19 +13,30 @@ const NowPlaying: React.FC = () => {
         const [movies, setMovies] = useState<MovieProps[]>([]);
         const [pages, setPages] = useState<number>(0);
         const [totalResults, setResults] = useState<number>(0);
+        const [isLoading, setIsLoading] = useState<boolean>(true);
+
         const fetchLatestMovies = async () => {
+            try{
             const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`);
             const data = await response.json();
             setMovies(data.results);
             setPages(data.total_pages);
             setResults(data.total_results);
+            } catch (error) {
+                console.error("Error fetching movies:", error);
+            } finally {
+                setIsLoading(false); 
+            }
         }
     
         useEffect(() => {
             fetchLatestMovies();
-    
         }, []);    
     
+        if (isLoading) {
+        return <Loading />; 
+        }
+
         return(
     
         <div className="w-full h-full p-4">

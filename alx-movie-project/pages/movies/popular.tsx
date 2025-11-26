@@ -15,18 +15,29 @@ const Popular: React.FC = () => {
     const [movies, setMovies] = useState<MovieProps[]>([]);
     const [pages, setPages] = useState<number>(0);
     const [totalResults, setResults] = useState<number>(0);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+
     const fetchPopularMovies = async () => {
+        try{
         const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`);
         const data = await response.json();
         setMovies(data.results);
         setPages(data.total_pages);
         setResults(data.total_results);
+        } catch (error) {
+            console.error("Error fetching movies:", error);
+        } finally {
+            setIsLoading(false); 
+        }
     }
 
     useEffect(() => {
         fetchPopularMovies();
-
     }, []);    
+
+    if (isLoading) {
+        return <Loading />; 
+    }
 
     return(
 
