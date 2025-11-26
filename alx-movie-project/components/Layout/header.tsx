@@ -210,7 +210,7 @@ const Header: React.FC = () => {
                 {suggestions.map((movie) => (
                 <a target="_blank" key={movie.id} href={`https://www.themoviedb.org/movie/${movie.id}`} onClick={handleSuggestionClick} className="block px-4 py-3 text-[#4C3A51] hover:bg-[#4C3A51] hover:text-[#f1d7de] transition-colors cursor-pointer">
                 <div className="flex justify-start gap-4">
-                <Image unoptimized={true} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://placehold.co/30x40/4C3A51/f1d7de?text=No+Img'} alt="movie suggestion"  width={30} height={40}/>
+                <Image unoptimized={true} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://placehold.co/30x40/4C3A51/f1d7de?text=No+Img'} alt="movie suggestion"  width={30} height={40} />
                 <div>
                 <p className="font-semibold">{movie.title}</p>
                 <p className="text-sm opacity-80">
