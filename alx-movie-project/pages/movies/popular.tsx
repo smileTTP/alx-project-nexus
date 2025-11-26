@@ -42,7 +42,7 @@ const Popular: React.FC = () => {
     return(
 
     <div className="w-full h-full p-4">
-        <h1 className={`${blackhansans.className} text-white underline text-5xl px-4 mt-4 mb-4`}>Popular Movies</h1>
+        <h1 className={`${blackhansans.className} text-white underline text-4xl px-4 mt-4 mb-4`}>Popular Movies</h1>
         <MoviesList page={1} results={movies} total_pages={pages} total_results={totalResults}/>
     </div>
     )

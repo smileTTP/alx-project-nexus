@@ -50,7 +50,7 @@ export default function Home() {
           <p className="text-[#591427] font-bold text-3xl md:text-[45px] text-center mt-4">“Oh how Shakespeare would have loved cinema!”</p>
         </div>
         <div>
-            <p className={`${blackhansans.className} text-white underline text-5xl px-4 mt-4 mb-4`}>Trending Today</p>
+            <p className={`${blackhansans.className} text-white underline text-4xl px-4 mt-4 mb-4`}>Trending Today</p>
             <MoviesList page={1} results={movies} total_pages={pages} total_results={totalResults}/>
         </div>
       </main>
