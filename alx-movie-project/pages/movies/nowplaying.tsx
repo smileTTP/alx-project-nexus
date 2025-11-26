@@ -10,12 +10,12 @@ const blackhansans = Black_Han_Sans({
         weight: ['400']
     });
 
-const TopRated: React.FC = () => {
+const NowPlaying: React.FC = () => {
         const [movies, setMovies] = useState<MovieProps[]>([]);
         const [pages, setPages] = useState<number>(0);
         const [totalResults, setResults] = useState<number>(0);
-        const fetchTopRatedMovies = async () => {
-            const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`);
+        const fetchLatestMovies = async () => {
+            const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`);
             const data = await response.json();
             setMovies(data.results);
             setPages(data.total_pages);
@@ -23,16 +23,16 @@ const TopRated: React.FC = () => {
         }
     
         useEffect(() => {
-            fetchTopRatedMovies();
+            fetchLatestMovies();
     
         }, []);    
     
         return(
     
         <div className="w-full h-full p-4">
-            <h1 className={`${blackhansans.className} text-white underline text-5xl px-4 mt-4 mb-4`}>Top Rated Movies</h1>
+            <h1 className={`${blackhansans.className} text-white underline text-5xl px-4 mt-4 mb-4`}>Now Playing</h1>
             <MoviesList page={1} results={movies} total_pages={pages} total_results={totalResults}/>
         </div>
         )
 }
-export default TopRated;
+export default NowPlaying;

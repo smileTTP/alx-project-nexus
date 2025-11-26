@@ -3,15 +3,24 @@ import MovieCard from "@/components/movies/movieCard";
 import { Genre, MovieProps } from "@/interfaces";
 import Loading from '@/components/common/loading';
 import Button from '@/components/common/button';
+import { Black_Han_Sans } from 'next/font/google';
+import MoviesList from '@/components/movies/moviesList';
 
+const blackhansans = Black_Han_Sans({
+        weight: ['400']
+    });
 
 const Popular: React.FC = () => {
 
-    const [movies, setMovies] = useState<MovieProps[]>([])
+    const [movies, setMovies] = useState<MovieProps[]>([]);
+    const [pages, setPages] = useState<number>(0);
+    const [totalResults, setResults] = useState<number>(0);
     const fetchPopularMovies = async () => {
         const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`);
         const data = await response.json();
-        setMovies(data.results)
+        setMovies(data.results);
+        setPages(data.total_pages);
+        setResults(data.total_results);
     }
 
     useEffect(() => {
@@ -21,17 +30,9 @@ const Popular: React.FC = () => {
 
     return(
 
-        <div className="w-full h-full p-4">
-            <h1 className="text-3xl font-bold mb-6 text-white">Popular Movies</h1>
-            <div className="w-full h-full">
-            <div className="flex justify-center">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {movies.map((movie) => (
-            <MovieCard key={movie.id} {...movie}/>
-            ))}
-            </div>
-            </div>
-            </div>
+    <div className="w-full h-full p-4">
+        <h1 className={`${blackhansans.className} text-white underline text-5xl px-4 mt-4 mb-4`}>Popular Movies</h1>
+        <MoviesList page={1} results={movies} total_pages={pages} total_results={totalResults}/>
     </div>
     )
 }

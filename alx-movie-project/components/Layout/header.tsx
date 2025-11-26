@@ -20,10 +20,10 @@ const Header: React.FC = () => {
     }
 
     const movieOptions = [
-        { name: "Latest", path: "/movies/latest" },
         { name: "Popular", path: "/movies/popular" },
-        { name: "Top Rated", path: "/movies/toprated" },
         { name: "Upcoming", path: "/movies/upcoming" },
+        { name: "Top Rated", path: "/movies/toprated" },
+        { name: "Now Playing", path: "/movies/nowplaying" }
     ];
     const toggleMovies = () => {
         setIsMoviesOpen(!isMoviesOpen);
