@@ -126,7 +126,7 @@ const Header: React.FC = () => {
     return (
         <header className="bg-[#96D9C0] p-4 sticky w-full top-0 z-50">
             <nav className="flex justify-between items-center p-4 mx-auto">
-            <div className="px-4"><Image src={'/assets/LOGO.svg'} alt="PELLICLA" height={50} width={200} className="w-[150px] md:w-[200px]"/></div>
+            <Link href="/" className="px-4"><Image src={'/assets/LOGO.svg'} alt="PELLICLA" height={50} width={200} className="w-[150px] md:w-[200px]"/></Link>
             <div className="hidden md:flex space-x-10 items-center">
                 <Link href="/" className="hover:text-[#591427]">
                 <p className="text-[#4C3A51] text-[30px] hover:text-[#591427]">Home</p>
