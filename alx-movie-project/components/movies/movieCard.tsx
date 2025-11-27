@@ -16,7 +16,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, genreMap }) => {
     
     return (
         <div className="w-[168.5px] h-[302px] bg-[#4C3A51] rounded-[10px] mt-4 shadow-inner shadow-[#f1d7de]/15">
-            <a href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank">
+            <Link href={`/movie/${movie.id}`}>
             <div className="flex justify-center">                
             <Image unoptimized={true} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://placehold.co/30x40/4C3A51/f1d7de?text=No+Img'} alt="movie card" width={151} height={223} className="mt-4" />
             </div>
@@ -31,7 +31,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, genreMap }) => {
             <p className="text-orange-300 flex items-center gap-1 text-[12px]">{movie.vote_average} <FaStar /></p>
             </div>
             </div>
-            </a>
+            </Link>
         </div>
     )
 }

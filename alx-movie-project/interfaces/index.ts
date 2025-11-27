@@ -42,3 +42,21 @@ export interface CurrentFilters {
     primary_release_year?: string;
     'vote_average.gte'?: string;
 }
+
+export interface MovieDetails extends MovieProps {
+    genres: Genre[];
+    budget: number;
+    homepage: string | null;
+    imdb_id: string | null;
+    runtime: number | null;
+    status: string;
+    tagline: string | null;
+    production_companies: ProductionCompany[];
+}
+
+export interface ProductionCompany {
+    id: number;
+    logo_path: string | null;
+    name: string;
+    origin_country: string;
+}

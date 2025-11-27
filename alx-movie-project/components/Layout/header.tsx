@@ -204,11 +204,10 @@ const Header: React.FC = () => {
                 {isLoading ? <FiLoader className="w-6 h-6 animate-spin" /> : <CiSearch className="w-6 h-6" />}
             </div>
 
-            {/* Link href={`/movie/${movie.id}`} */}
             {suggestions.length > 0 && (
             <div className="absolute top-full w-full mt-2 bg-[#f1d7de] rounded-xl shadow-2xl border-2 border-[#4C3A51] py-2 z-40">
                 {suggestions.map((movie) => (
-                <a target="_blank" key={movie.id} href={`https://www.themoviedb.org/movie/${movie.id}`} onClick={handleSuggestionClick} className="block px-4 py-3 text-[#4C3A51] hover:bg-[#4C3A51] hover:text-[#f1d7de] transition-colors cursor-pointer">
+                <Link key={movie.id} href={`/movie/${movie.id}`} onClick={handleSuggestionClick} className="block px-4 py-3 text-[#4C3A51] hover:bg-[#4C3A51] hover:text-[#f1d7de] transition-colors cursor-pointer">
                 <div className="flex justify-start gap-4">
                 <Image unoptimized={true} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://placehold.co/30x40/4C3A51/f1d7de?text=No+Img'} alt="movie suggestion"  width={30} height={40} />
                 <div>
@@ -218,7 +217,7 @@ const Header: React.FC = () => {
                 </p>
                 </div>
                 </div>
-                </a>
+                </Link>
                 ))}
                 <div className="border-t border-[#4C3A51]/20 mt-1 pt-1">
                     <p className="text-sm px-4 text-[#4C3A51] opacity-70">Showing top {suggestions.length} results.</p>
