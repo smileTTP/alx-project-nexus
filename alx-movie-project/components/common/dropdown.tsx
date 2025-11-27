@@ -29,7 +29,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ label, options, filterKey, s
                 className="p-2 border-2 border-[#4C3A51] rounded-md bg-[#f1d7de] text-[#4C3A51] text-sm text-left w-full flex justify-between items-center truncate">
                 <span className="truncate">{selectedLabel}</span>
                 <IoIosArrowDown className={`w-4 h-4 ml-2 transition-transform duration-200 ${isOpen ? 'rotate-180' : 'rotate-0'}`} />            
-                </button>
+            </button>
 
             {isOpen && (
                 <ul 
