@@ -61,7 +61,7 @@ const Movie: React.FC<MovieDetailsComponentProps> = ({ movie, trailerKey }) => {
                     <p className="font-semibold text-xs sm:text-sm md:text-base text-[#D27C91] mb-4">
                     {movie.genres.map(g => g.name).join(', ')}
                     </p>
-                    <p className="text-xs sm:text-sm md:text-base text-[#f1d7de] mb-4">
+                    <p className="font-semibold text-xs sm:text-sm md:text-base text-[#f1d7de] mb-4">
                     {releaseYear} | {runtimeDisplay}
                     </p>
                     </div>  
