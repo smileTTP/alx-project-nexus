@@ -21,7 +21,7 @@ export const Dropdown: React.FC<DropdownProps> = ({ label, options, filterKey, s
     };
 
     return (
-        <div className="flex flex-col relative w-32">
+        <div className="flex flex-col relative w-28">
             <label className="text-[#f1d7de] text-base font-medium mb-1">{label}</label>
             <button
                 type="button"
