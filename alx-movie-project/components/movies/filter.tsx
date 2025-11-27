@@ -52,7 +52,7 @@ const Filter: React.FC<FilterProps> = ({ genres, currentFilters, onFilterChange 
     ];
 
     return (
-        <div className="flex flex-wrap gap-4 p-4" ref={filterRef}>
+        <div className="flex flex-wrap gap-2 p-4" ref={filterRef}>
             
             <Dropdown
                 label="Year"
