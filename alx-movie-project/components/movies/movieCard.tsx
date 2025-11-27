@@ -24,11 +24,11 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, genreMap }) => {
             <p className="text-[#96D9C0] font-bold text-base overflow-hidden whitespace-nowrap text-ellipsis ">{movie.title}</p>
             <div className="flex justify-between pb-2">
             {genres && (
-                <p className="text-sm text-[#D27C91] overflow-hidden whitespace-nowrap text-ellipsis max-w-[75%]">
+                <p className="text-[12px] text-[#D27C91] overflow-hidden whitespace-nowrap text-ellipsis max-w-[70%]">
                 {genres}
                 </p>
             )}
-            <p className="text-orange-300 flex items-center gap-1 text-sm">{movie.vote_average} <FaStar /></p>
+            <p className="text-orange-300 flex items-center gap-1 text-[12px]">{movie.vote_average} <FaStar /></p>
             </div>
             </div>
             </a>
