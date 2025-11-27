@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { MovieProps, TMDBResponse } from "@/interfaces"; 
 
@@ -34,7 +34,8 @@ const useAllMoviesData = <T = MovieProps>(
     const [totalResults, setResults] = useState<number>(0);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    const filtersChanged = JSON.stringify(filterParams);
+    const filtersChanged = JSON.stringify(filterParams); 
+    const prevFiltersRef = useRef(filtersChanged);
 
     const fetchData = useCallback(async (page: number) => {
         setIsLoading(true);
@@ -58,7 +59,7 @@ const useAllMoviesData = <T = MovieProps>(
             setMovies(apiData.results as T[]);
             setPages(Math.min(apiData.total_pages, 500)); 
             setResults(apiData.total_results);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: "smooth" });
         } catch (error) {
             console.error(`Error fetching data for ${apiUrlPath}:`, error);
             setMovies([]);
@@ -66,27 +67,30 @@ const useAllMoviesData = <T = MovieProps>(
         } finally {
             setIsLoading(false); 
         }
-    }, [apiUrlPath, filterParams]); 
+    }, [apiUrlPath, filterParams]);
 
     useEffect(() => {
-
-        if (currentPage !== 1 && searchParams.get('page') !== '1') {
+        const filtersAreDifferent = filtersChanged !== prevFiltersRef.current;
+        
+        if (filtersAreDifferent && currentPage > 1) { 
             const params = new URLSearchParams(searchParams.toString());
-            if (params.get('page') !== '1') {
-                params.set('page', '1');
-                router.replace(`${pathname}?${params.toString()}`);
-                return;
-            }
+            params.set("page", "1");
+            router.replace(`${pathname}?${params.toString()}`);
         }
+        
+        prevFiltersRef.current = filtersChanged;
 
+    }, [filtersChanged, router, pathname, searchParams]); 
+
+    useEffect(() => {
         fetchData(currentPage);
-    }, [currentPage, fetchData, filtersChanged, router, pathname, searchParams]);
+    }, [currentPage, fetchData]); 
 
     const handlePageChange = useCallback((page: number) => {
         if (page < 1 || page > pages || page === currentPage) return;
         
         const params = new URLSearchParams(searchParams.toString());
-        params.set('page', page.toString());
+        params.set("page", page.toString());
         
         router.push(`${pathname}?${params.toString()}`);
     }, [router, pathname, searchParams, pages, currentPage]);
