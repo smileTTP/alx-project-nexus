@@ -11,7 +11,7 @@ const blackhansans = Black_Han_Sans({
     });
 export default function Home() {
 
-    const apiPath = "/trending/movie";
+    const apiPath = "/trending/movie/day";
     const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY || "";
     const { genreMap, isLoading: genresLoading } = useGenres(apiKey);
 
@@ -41,7 +41,7 @@ export default function Home() {
         </div>
         <div>
             <p className={`${blackhansans.className} text-white underline text-4xl px-4 mt-8 mb-4`}>Trending Today</p>
-            <MoviesList page={1} results={movies} total_pages={pages} total_results={totalResults} genreMap={genreMap}/>
+            <MoviesList page={currentPage} results={movies} total_pages={pages} total_results={totalResults} genreMap={genreMap}/>
             {pages > 1 && (
                 <Pagination 
                     currentPage={currentPage}
