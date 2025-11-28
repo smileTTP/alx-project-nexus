@@ -86,7 +86,7 @@ const Movie: React.FC<MovieDetailsProps> = ({ movie, trailerKey, cast }) => {
                     {cast.map(member => (
                         <div key={member.credit_id} className="text-center w-[100px] shrink-0">
                             <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full overflow-hidden mb-2 shadow-lg border-2 border-[#D27C91]">
-                                <Image src={ member.profile_path  ? `https://image.tmdb.org/t/p/w200${member.profile_path}` : `https://placehold.co/96x96/635C7A/f1d7de?text=${member.name.split(' ')[0]}` }
+                                <Image src={ member.profile_path  ? `https://image.tmdb.org/t/p/w200${member.profile_path}` : `https://placehold.co/96x96/4C3A51/f1d7de?text=${member.name.split(' ')[0]}` }
                                         alt={member.name} width={96} height={96} className="w-full h-full object-cover" />
                                 </div>
                                 <p className="text-sm font-semibold text-[#f1d7de] leading-tight pt-1">{member.name}</p>
