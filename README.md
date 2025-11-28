@@ -33,6 +33,7 @@ The objective is to build a movie recommendation application where users can bro
    - Movie Poster
    - Movie Name
    - Movie Genre
+   - Movie Rating
 3. Footer
    - Logo
    - Figma Link
