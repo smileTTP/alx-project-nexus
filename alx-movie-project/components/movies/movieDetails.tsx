@@ -116,6 +116,7 @@ const Movie: React.FC<MovieDetailsProps> = ({ movie, trailerKey, cast }) => {
                     <p className="text-[#f1d7de] opacity-70">No production companies listed.</p>
                 )}
             </div>
+            <div className="py-12"></div>
         </section>
     </div>
     );

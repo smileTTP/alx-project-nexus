@@ -38,7 +38,8 @@ const Header: React.FC = () => {
         { name: "Popular", path: "/movies/popular" },
         { name: "Upcoming", path: "/movies/upcoming" },
         { name: "Top Rated", path: "/movies/toprated" },
-        { name: "Now Playing", path: "/movies/nowplaying" }
+        { name: "Now Playing", path: "/movies/nowplaying" },
+        { name: "Treding Today", path: "/movies/trendingtoday" }
     ];
     const toggleMovies = () => {
         setIsMoviesOpen(!isMoviesOpen);
@@ -126,28 +127,26 @@ const Header: React.FC = () => {
     return (
         <header className="bg-[#96D9C0] p-4 sticky w-full top-0 z-50">
             <nav className="flex justify-between items-center p-4 mx-auto">
-            <Link href="/" className="px-4"><Image src={'/assets/LOGO.svg'} alt="PELLICLA" height={50} width={200} className="w-[150px] md:w-[200px]"/></Link>
-            <div className="hidden md:flex space-x-10 items-center">
+            <Link href="/" className="px-4"><Image src={'/assets/LOGO.svg'} alt="PELLICLA" height={50} width={200} className="w-[150px] md:w-[200px]"/></Link>            
+            <div className="flex items-center">
+            <div className="hidden md:flex items-center space-x-8">
                 <Link href="/" className="hover:text-[#591427]">
-                <p className="text-[#4C3A51] text-[30px] hover:text-[#591427]">Home</p>
+                    <p className="text-[#4C3A51] text-[30px] hover:text-[#591427]">Home</p>
                 </Link>
                 <div className="relative">
-                <button onClick={toggleMovies} className="text-[#4C3A51] text-[30px] hover:text-[#591427]">Movies</button>
-                {isMoviesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-[#f1d7de] rounded-lg shadow-lg border-2 border-[#4C3A51] py-2 z-50">
-                    {movieOptions.map((option) => (
-                    <Link  key={option.name} href={option.path} onClick={() => setIsMoviesOpen(false)}>
-                    <p className="block px-4 py-2 text-[#4C3A51] text-xl hover:bg-[#4C3A51] hover:text-[#f1d7de] transition-colors">
-                    {option.name}
-                    </p>
-                    </Link> 
-                    ))} 
-                </div> 
-                )}
+                    <button onClick={toggleMovies} className="text-[#4C3A51] text-[30px] hover:text-[#591427]">Movies</button>
+                    {isMoviesOpen && (
+                        <div className="absolute top-full right-0 mt-2 w-48 bg-[#f1d7de] rounded-lg shadow-lg border-2 border-[#4C3A51] py-2 z-50">
+                            {movieOptions.map((option) => (
+                                <Link key={option.name} href={option.path} onClick={() => setIsMoviesOpen(false)}>
+                                    <p className="block px-4 py-2 text-[#4C3A51] text-xl hover:bg-[#4C3A51] hover:text-[#f1d7de] transition-colors">
+                                        {option.name}
+                                    </p>
+                                </Link> 
+                            ))} 
+                        </div> 
+                    )}
                 </div>
-                <Link href="/">
-                <p className="text-[#4C3A51] text-[30px] hover:text-[#591427]">Dashboard</p>
-                </Link>
             </div>
             <div className="flex items-center space-x-10 px-4">
                 <button onClick={toggleSearch} className="text-[#4C3A51]">
@@ -164,6 +163,7 @@ const Header: React.FC = () => {
                 <IoIosMenu className="text-[#4C3A51] text-4xl" />
                 )}
                 </button>
+            </div>
             </div>
             </nav>
             {isMenuOpen && (
@@ -189,10 +189,6 @@ const Header: React.FC = () => {
                 </div>
                 )}
                 </div>
-            <Link href="/">
-            <p className="block text-[#D27C91] text-[24px] py-2 border-[#96D9C0]/10 hover:text-[#8080FF] rounded px-2 cursor-pointer">
-            Dashboard</p>
-            </Link>
             </div>
             )}
 

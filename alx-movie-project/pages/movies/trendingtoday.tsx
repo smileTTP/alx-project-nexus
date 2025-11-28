@@ -12,7 +12,7 @@ const blackhansans = Black_Han_Sans({
 
 const Popular: React.FC = () => {
 
-    const apiPath = "/movie/popular";
+    const apiPath = "/trending/movie/day";
     const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY || "";
     const { genreMap, isLoading: genresLoading } = useGenres(apiKey);
 
@@ -32,7 +32,7 @@ const Popular: React.FC = () => {
         return(
     
         <div className="w-full h-full p-4">
-            <h1 className={`${blackhansans.className} text-white underline text-4xl px-4 mt-8 mb-4`}>Popular Movies</h1>
+            <h1 className={`${blackhansans.className} text-white underline text-4xl px-4 mt-8 mb-4`}>Trending Movies</h1>
             <MoviesList page={currentPage} results={movies} total_pages={pages} total_results={totalResults} genreMap={genreMap}/>
             {pages > 1 && (
                 <Pagination 

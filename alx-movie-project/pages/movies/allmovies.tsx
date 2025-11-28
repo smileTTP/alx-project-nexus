@@ -12,7 +12,6 @@ const blackhansans = Black_Han_Sans({
         weight: ['400']
     });
 
-
 const AllMovies: React.FC = () => {
     const apiPath = "/discover/movie";
     const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY || "";

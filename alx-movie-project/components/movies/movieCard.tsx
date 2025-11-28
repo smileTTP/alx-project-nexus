@@ -7,15 +7,16 @@ import { getGenreNames } from "@/utils/genresUtils";
 interface MovieCardProps {
     movie: MovieProps;
     genreMap: { [key: number]: string };
+    className?: string;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ movie, genreMap }) => {
+const MovieCard: React.FC<MovieCardProps> = ({ movie, genreMap, className = '' }) => {
 
     const genreNames = getGenreNames(movie.genre_ids, genreMap);
     const genres = genreNames.join(', ');
     
     return (
-        <div className="w-[168.5px] h-[302px] bg-[#4C3A51] rounded-[10px] mt-4 shadow-inner shadow-[#f1d7de]/15">
+        <div className={`w-[168.5px] h-[302px] bg-[#4C3A51] rounded-[10px] mt-4 shadow-inner shadow-[#f1d7de]/15 ${className}`}>
             <Link href={`/movie/${movie.id}`}>
             <div className="flex justify-center">                
             <Image unoptimized={true} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://placehold.co/30x40/4C3A51/f1d7de?text=No+Img'} alt="movie card" width={151} height={223} className="mt-4" />

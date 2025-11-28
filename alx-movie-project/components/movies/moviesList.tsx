@@ -15,9 +15,6 @@ const MoviesList: React.FC<MoviesListProps> = ({ results, genreMap }) => {
                     ))}
                 </div>
                 </div>
-            {/* <div className="flex justify-center items-center mb-8 mt-8">
-                <button className="bg-[#8080FF] w-[174px] h-[50px] rounded-[10px] text-white text-[20px]">Show more</button>
-            </div> */}
             </div>
         </div>
     )

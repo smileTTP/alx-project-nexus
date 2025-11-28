@@ -1,54 +1,29 @@
-import { Black_Han_Sans } from 'next/font/google';
-import { MovieProps } from "@/interfaces";
-import MoviesList from "@/components/movies/moviesList";
-import Loading from "@/components/common/loading";
-import Pagination from "@/components/common/pagination";
-import useMoviesData from '@/hooks/useMoviesData';
-import useGenres from '@/hooks/useGenres';
+import Loading from '@/components/common/loading';
 import { HeroPage } from '@/components/heropage';
+import MoviesWidget from '@/components/movies/movieWidget'; 
 import { TypingEffect } from '@/components/quote';
+import useGenres from '@/hooks/useGenres';
+import { NOWPLAYING_API, NOWPLAYING_PAGE, POPULAR_API, POPULAR_PAGE, TOP_RATED_API, TOP_RATED_PAGE, TRENDING_API, TRENDING_PAGE, UPCOMING_API, UPCOMING_PAGE } from '@/constants';
 
-const blackhansans = Black_Han_Sans({
-      weight: ['400']
-    });
 export default function Home() {
+    const { genreMap, isLoading: genresLoading } = useGenres(process.env.NEXT_PUBLIC_TMDB_API_KEY || "");
+    
+    if (genresLoading) return <Loading />; 
 
-    const apiPath = "/trending/movie/day";
-    const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY || "";
-    const { genreMap, isLoading: genresLoading } = useGenres(apiKey);
-
-    const { 
-        movies: movies, 
-        pages, 
-        totalResults, 
-        isLoading: moviesLoading, 
-        currentPage, 
-        handlePageChange 
-    } = useMoviesData<MovieProps>(apiPath);
-
-    if (moviesLoading || genresLoading) {
-        return <Loading />; 
-    }
-
-  return (
-    <div className="flex items-center justify-center">
-      <main className="flex w-full max-w-full flex-col">
-        <HeroPage/>
-        <div className="bg-white w-full h-[274px] flex items-center justify-center">
-          <TypingEffect text={'“Oh how Shakespeare would have loved cinema!”'}/>
+    return (
+          <div className="flex items-center justify-center">
+          <main className="flex w-full max-w-full flex-col">
+            <HeroPage/>
+            <div className="bg-white w-full h-[274px] flex items-center justify-center">
+              <TypingEffect text={'“Oh how Shakespeare would have loved cinema!”'}/>
+            </div>
+            <MoviesWidget apiUrlPath={TRENDING_API} path={TRENDING_PAGE} title="Trending Today" genreMap={genreMap} />
+            <MoviesWidget apiUrlPath={POPULAR_API} path={POPULAR_PAGE} title="Popular Movies" genreMap={genreMap}  />
+            <MoviesWidget apiUrlPath={TOP_RATED_API} path={TOP_RATED_PAGE} title="Top Rated" genreMap={genreMap} />
+            <MoviesWidget apiUrlPath={UPCOMING_API} path={UPCOMING_PAGE} title="Upcoming Movies" genreMap={genreMap} />
+            <MoviesWidget apiUrlPath={NOWPLAYING_API} path={NOWPLAYING_PAGE} title="Now Playing" genreMap={genreMap} />
+            <div className="py-12"></div>
+            </main>
         </div>
-        <div>
-            <p className={`${blackhansans.className} text-white underline text-4xl px-4 mt-8 mb-4`}>Trending Today</p>
-            <MoviesList page={currentPage} results={movies} total_pages={pages} total_results={totalResults} genreMap={genreMap}/>
-            {pages > 1 && (
-                <Pagination 
-                    currentPage={currentPage}
-                    totalPages={pages}
-                    onPageChange={handlePageChange}
-                />
-            )}
-        </div>
-      </main>
-    </div>
-  );
+    );
 }
