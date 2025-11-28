@@ -45,7 +45,7 @@ const Movie: React.FC<MovieDetailsProps> = ({ movie, trailerKey, cast }) => {
         <section className="container z-10 mx-auto px-6 sm:px-12 md:px-40 rounded-b-lg relative mt-[-88px] sm:mt-[-120px] md:-mt-40 mb-8">
             <div className="bg-transparent flex flex-col md:flex-row gap-6 sm:gap-8 pt-4 pb-6 sm:pt-6 sm:pb-8 rounded-b-lg ">
                 <div className="flex-none w-full max-w-60 sm:max-w-[300px] mx-auto md:mx-0 flex flex-col items-center">
-                    <Image src={posterUrl} alt={movie.title || 'Movie Poster'} width={300} height={450} className="w-full object-cover rounded-[10px]" unoptimized={posterUrl.includes('placeholder')}  quality={90}/>
+                    <Image src={posterUrl} alt={movie.title || 'Movie Poster'} width={300} height={450} className="w-full object-cover rounded-[10px]" quality={90}/>
                     {trailerKey && (
                         <button onClick={handleWatchTrailer} className="mt-4 flex items-center justify-center w-full py-3 px-6 bg-[#f1d7de] text-[#4C3A51] font-bold rounded-lg shadow-md hover:bg-[#e0c4ce] transition duration-300 transform hover:scale-105">
                         <span className="mr-2"><MdOutlineOndemandVideo className="text-xl" /></span> 
@@ -86,8 +86,8 @@ const Movie: React.FC<MovieDetailsProps> = ({ movie, trailerKey, cast }) => {
                     {cast.map(member => (
                         <div key={member.credit_id} className="text-center w-[100px] shrink-0">
                             <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full overflow-hidden mb-2 shadow-lg border-2 border-[#D27C91]">
-                                <Image src={ member.profile_path  ? `https://image.tmdb.org/t/p/w200${member.profile_path}` : `https://placehold.co/96x96/4C3A51/f1d7de?text=${member.name.split(' ')[0]}` }
-                                        alt={member.name} width={96} height={96} className="w-full h-full object-cover" />
+                                <Image src={ member.profile_path  ? `https://image.tmdb.org/t/p/w200${member.profile_path}` : "/assets/placeholder-purple.png" }
+                                    alt={member.name} width={96} height={96} className="w-full h-full object-cover" />
                                 </div>
                                 <p className="text-sm font-semibold text-[#f1d7de] leading-tight pt-1">{member.name}</p>
                             </div>
