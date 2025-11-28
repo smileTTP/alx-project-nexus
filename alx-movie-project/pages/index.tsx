@@ -6,6 +6,7 @@ import Pagination from "@/components/common/pagination";
 import useMoviesData from '@/hooks/useMoviesData';
 import useGenres from '@/hooks/useGenres';
 import { HeroPage } from '@/components/heropage';
+import { TypingEffect } from '@/components/quote';
 
 const blackhansans = Black_Han_Sans({
       weight: ['400']
@@ -34,7 +35,7 @@ export default function Home() {
       <main className="flex w-full max-w-full flex-col">
         <HeroPage/>
         <div className="bg-white w-full h-[274px] flex items-center justify-center">
-          <p className="text-[#591427] font-bold text-3xl md:text-[45px] text-center mt-4">“Oh how Shakespeare would have loved cinema!”</p>
+          <TypingEffect text={'“Oh how Shakespeare would have loved cinema!”'}/>
         </div>
         <div>
             <p className={`${blackhansans.className} text-white underline text-4xl px-4 mt-8 mb-4`}>Trending Today</p>
