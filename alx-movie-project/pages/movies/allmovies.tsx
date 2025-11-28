@@ -7,6 +7,7 @@ import useAllMoviesData from '@/hooks/useAllMovies';
 import useGenres from "@/hooks/useGenres";
 import { useCallback, useState } from "react";
 import Filter from "@/components/movies/filter";
+import { API_KEY } from "@/constants";
 
 const blackhansans = Black_Han_Sans({
         weight: ['400']
@@ -14,8 +15,7 @@ const blackhansans = Black_Han_Sans({
 
 const AllMovies: React.FC = () => {
     const apiPath = "/discover/movie";
-    const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY || "";
-    const { genreMap, genreList, isLoading: genresLoading } = useGenres(apiKey);
+    const { genreMap, genreList, isLoading: genresLoading } = useGenres(API_KEY);
 
     const [filters, setFilters] = useState<CurrentFilters>({});
     

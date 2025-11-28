@@ -5,6 +5,7 @@ import MoviesList from '@/components/movies/moviesList';
 import Pagination from '@/components/common/pagination';
 import useMoviesData from '@/hooks/useMoviesData';
 import useGenres from "@/hooks/useGenres";
+import { API_KEY } from "@/constants";
 
 const blackhansans = Black_Han_Sans({
         weight: ['400']
@@ -13,8 +14,7 @@ const blackhansans = Black_Han_Sans({
 const Popular: React.FC = () => {
 
     const apiPath = "/trending/movie/day";
-    const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY || "";
-    const { genreMap, isLoading: genresLoading } = useGenres(apiKey);
+    const { genreMap, isLoading: genresLoading } = useGenres(API_KEY);
 
     const { 
         movies: movies, 

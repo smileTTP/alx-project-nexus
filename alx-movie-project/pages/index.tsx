@@ -3,11 +3,11 @@ import { HeroPage } from '@/components/heropage';
 import MoviesWidget from '@/components/movies/movieWidget'; 
 import { TypingEffect } from '@/components/quote';
 import useGenres from '@/hooks/useGenres';
-import { NOWPLAYING_API, NOWPLAYING_PAGE, POPULAR_API, POPULAR_PAGE, TOP_RATED_API, TOP_RATED_PAGE, TRENDING_API, TRENDING_PAGE, UPCOMING_API, UPCOMING_PAGE } from '@/constants';
+import { API_KEY, NOWPLAYING_API, NOWPLAYING_PAGE, POPULAR_API, POPULAR_PAGE, TOP_RATED_API, TOP_RATED_PAGE, TRENDING_API, TRENDING_PAGE, UPCOMING_API, UPCOMING_PAGE } from '@/constants';
 
 export default function Home() {
-    const { genreMap, isLoading: genresLoading } = useGenres(process.env.NEXT_PUBLIC_TMDB_API_KEY || "");
-    
+    const { genreMap, isLoading: genresLoading } = useGenres(API_KEY);
+
     if (genresLoading) return <Loading />; 
 
     return (
