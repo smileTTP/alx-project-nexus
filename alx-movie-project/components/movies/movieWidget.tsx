@@ -32,7 +32,7 @@ const MoviesWidget: React.FC<MoviesWidgetProps> = ({ title, path, apiUrlPath, ge
     return (
         <div className="mt-8">
             <div className="flex justify-between items-baseline px-4 mb-4">
-                <p className={`${blackhansans.className} text-white underline text-4xl`}>{title}</p>
+                <p className={`${blackhansans.className} text-white underline text-2xl md:text-4xl`}>{title}</p>
                 <Link href={path} className="text-[#96D9C0] hover:text-[#f1d7de] text-xl font-bold transition-colors flex justify-between items-center gap-4">
                     <p>View All</p>
                     <FaArrowRight />
