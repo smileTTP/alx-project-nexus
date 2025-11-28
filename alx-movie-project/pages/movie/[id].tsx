@@ -9,7 +9,7 @@ const MovieDetailsPage: React.FC = () => {
     
     const movieId = typeof router.query.id === 'string' ? router.query.id : undefined;
 
-    const { movie, trailerKey, isLoading } = useMovieDetails(movieId); 
+    const { movie, trailerKey, cast, isLoading } = useMovieDetails(movieId); 
 
     if (isLoading || router.isFallback) {
         return <Loading />;
@@ -19,7 +19,7 @@ const MovieDetailsPage: React.FC = () => {
         return <ErrorComponent />; 
     }
 
-    return <Movie movie={movie} trailerKey={trailerKey} />;
+    return <Movie movie={movie} trailerKey={trailerKey} cast={cast} />;
 };
 
 export default MovieDetailsPage;

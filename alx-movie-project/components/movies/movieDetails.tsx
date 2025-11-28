@@ -2,18 +2,19 @@ import React from 'react';
 import Image from 'next/image';
 import { Black_Han_Sans } from 'next/font/google';
 import { MdOutlineOndemandVideo } from "react-icons/md";
-import { MovieDetails } from '@/interfaces'; 
+import { MovieDetails, Cast } from '@/interfaces'; 
 
 const blackhansans = Black_Han_Sans({ 
     weight: ['400'] 
 });
 
-interface MovieDetailsComponentProps {
+interface MovieDetailsProps {
     movie: MovieDetails;
     trailerKey: string | null;
+    cast: Cast[]; 
 }
 
-const Movie: React.FC<MovieDetailsComponentProps> = ({ movie, trailerKey }) => {
+const Movie: React.FC<MovieDetailsProps> = ({ movie, trailerKey, cast }) => {
     
     const runtimeMinutes = movie.runtime || 0;
     const hours = Math.floor(runtimeMinutes / 60);
@@ -77,9 +78,28 @@ const Movie: React.FC<MovieDetailsComponentProps> = ({ movie, trailerKey }) => {
                     </p>
                 </div>
             </div>
-            
+
+            <div className="max-w-full mx-auto py-8">
+                <h2 className={`${blackhansans.className} text-2xl font-bold text-[#f1d7de] mb-4 border-b border-[#D27C91] pb-2`}>Cast Members</h2>
+                {cast && cast.length > 0 ? (
+                    <div className="flex flex-row overflow-x-auto space-x-4 pb-4 no-scrollbar">
+                    {cast.map(member => (
+                        <div key={member.credit_id} className="text-center w-[100px] shrink-0">
+                            <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full overflow-hidden mb-2 shadow-lg border-2 border-[#D27C91]">
+                                <Image src={ member.profile_path  ? `https://image.tmdb.org/t/p/w200${member.profile_path}` : `https://placehold.co/96x96/635C7A/f1d7de?text=${member.name.split(' ')[0]}` }
+                                        alt={member.name} width={96} height={96} className="w-full h-full object-cover" />
+                                </div>
+                                <p className="text-sm font-semibold text-[#f1d7de] leading-tight pt-1">{member.name}</p>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <p className="text-[#f1d7de] opacity-70">Cast information not available.</p>
+                )}
+            </div>
+
             <div className="max-w-7xl mx-auto p-8 mb-8">
-                <h2 className="text-2xl font-semibold text-[#f1d7de] mb-4">Production Companies</h2>
+                <h2 className={`${blackhansans.className} text-2xl font-bold text-[#f1d7de] mb-4 border-b border-[#D27C91] pb-2`}>Production Companies</h2>
                 {movie.production_companies && movie.production_companies.length > 0 ? (
                     <div className="flex flex-wrap gap-6 items-center">
                     {movie.production_companies.map(company => (
