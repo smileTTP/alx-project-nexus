@@ -38,7 +38,6 @@ const Movie: React.FC<MovieDetailsComponentProps> = ({ movie, trailerKey }) => {
 
     return (
     <div className="min-h-screen bg-[#4C3A51] text-[#f1d7de]">
-        
         <div className="relative h-60 sm:h-9 md:h-[480px] w-full bg-cover bg-center" style={{ backgroundImage: `url(${backdropUrl})` }}>
             <div className="absolute inset-0 bg-linear-to-b from-[#4C3A51]/80 to-[#f1d7de]/50 opacity-70"></div>
         </div>
