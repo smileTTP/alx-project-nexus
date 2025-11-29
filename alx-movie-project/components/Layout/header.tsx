@@ -3,10 +3,10 @@ import Image from "next/image";
 import { CiSearch } from "react-icons/ci";
 import { IoIosMenu, IoIosClose, IoIosArrowDown } from "react-icons/io";
 import { FiLoader } from "react-icons/fi";
+import { FaUser } from "react-icons/fa";
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { MovieProps, TMDBResponse } from "@/interfaces";
-
-const TMDB_API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+import { API_KEY } from "@/constants";
 
 const Header: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,21 +17,35 @@ const Header: React.FC = () => {
     const [query, setQuery] = useState<string>("");
     const [debouncedQuery, setDebouncedQuery] = useState("");
     const DEBOUNCE_DELAY = 500;
+    const [isUserOpen, setIsUserOpen] = useState(false);
+
+    const toggleUser = () => {
+        setIsUserOpen(prev => !prev);
+    };
 
     const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
     if (isSearchOpen) setIsSearchOpen(false);
+    if (isUserOpen) setIsUserOpen(false);
     };
     const toggleSearch = () => {
         setIsSearchOpen(!isSearchOpen);
         if (isMenuOpen) setIsMenuOpen(false);
         if (isMoviesOpen) setIsMoviesOpen(false);
+        if (isUserOpen) setIsUserOpen(false);
 
         if (isSearchOpen) {
             setQuery("");
             setSuggestions([]);
         }
-    }
+    };
+
+    const handleUserToggle = () => {
+        toggleUser();
+        if (isMenuOpen) setIsMenuOpen(false);
+        if (isSearchOpen) setIsSearchOpen(false);
+        if (isMoviesOpen) setIsMoviesOpen(false);
+    };
 
     const movieOptions = [
         { name: "All", path: "/movies/allmovies" },
@@ -63,7 +77,7 @@ const Header: React.FC = () => {
 
     const fetchSuggestions = useCallback(async () => {
 
-        if (!TMDB_API_KEY) {
+        if (!API_KEY) {
             console.error("TMDB API Key is missing. Check your .env.local file or Next.js config.");
             setSuggestions([]);
             setLoading(false);
@@ -78,7 +92,7 @@ const Header: React.FC = () => {
         setLoading(true);
 
         try {
-            const url = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&language=en-US&query=${encodeURIComponent(
+            const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(
                 debouncedQuery
             )}`;
             const response = await fetch(url, { cache: "no-store" });
@@ -124,6 +138,11 @@ const Header: React.FC = () => {
         console.log("Navigating to movie details page...");
     }
 
+        const closeLoginDropdown = () => {
+        setIsUserOpen(false);
+    }
+
+
     return (
         <header className="bg-[#96D9C0] p-4 sticky w-full top-0 z-50">
             <nav className="flex justify-between items-center p-4 mx-auto">
@@ -136,15 +155,15 @@ const Header: React.FC = () => {
                 <div className="relative">
                     <button onClick={toggleMovies} className="text-[#4C3A51] text-[30px] hover:text-[#591427]">Movies</button>
                     {isMoviesOpen && (
-                        <div className="absolute top-full right-0 mt-2 w-48 bg-[#f1d7de] rounded-lg shadow-lg border-2 border-[#4C3A51] py-2 z-50">
-                            {movieOptions.map((option) => (
-                                <Link key={option.name} href={option.path} onClick={() => setIsMoviesOpen(false)}>
-                                    <p className="block px-4 py-2 text-[#4C3A51] text-xl hover:bg-[#4C3A51] hover:text-[#f1d7de] transition-colors">
-                                        {option.name}
-                                    </p>
-                                </Link> 
-                            ))} 
-                        </div> 
+                    <div className="absolute top-full right-0 mt-2 w-48 bg-[#f1d7de] rounded-lg shadow-lg border-2 border-[#4C3A51] py-2 z-50">
+                        {movieOptions.map((option) => (
+                        <Link key={option.name} href={option.path} onClick={() => setIsMoviesOpen(false)}>
+                            <p className="block px-4 py-2 text-[#4C3A51] text-xl hover:bg-[#4C3A51] hover:text-[#f1d7de] transition-colors">
+                            {option.name}
+                            </p>
+                        </Link> 
+                        ))} 
+                    </div> 
                     )}
                 </div>
             </div>
@@ -163,6 +182,18 @@ const Header: React.FC = () => {
                 <IoIosMenu className="text-[#4C3A51] text-4xl" />
                 )}
                 </button>
+                <div className="relative">
+                <button onClick={handleUserToggle} className="text-[#4C3A51] hover:text-[#591427] transition-colors focus:outline-none">
+                    <FaUser className="text-3xl" />
+                </button>
+                {isUserOpen && (
+                <div className="absolute top-full right-0 mt-2 w-56 bg-[#f1d7de] rounded-lg shadow-xl border-2 border-[#4C3A51] py-2 z-50">
+                    <Link href="/user/login" onClick={closeLoginDropdown} className="block px-4 py-3 text-[#4C3A51] text-lg hover:bg-[#4C3A51] hover:text-[#f1d7de] transition-colors">
+                    Login
+                    </Link>
+                </div>
+                )}
+                </div>
             </div>
             </div>
             </nav>
