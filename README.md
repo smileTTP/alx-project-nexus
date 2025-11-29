@@ -36,7 +36,7 @@ Every endpoint returns and object with 'results' key.
 - #8080FF
 - #7B1B38
 - #f1d7de
-[#FF9933](https://via.placeholder.com/15/FF9933/000000?text=+) `#FF9933`
+
 
 ## Typography
 - Black Han Sans
