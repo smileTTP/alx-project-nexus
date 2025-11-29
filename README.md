@@ -63,6 +63,7 @@ Every endpoint returns and object with 'results' key.
    - Filtering
 
 5. Movie Details
+   - Movie backdrop
    - Movie Poster
    - Movie Name
    - Movie Rating
