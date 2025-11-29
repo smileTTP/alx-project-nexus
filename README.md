@@ -44,14 +44,35 @@ Every endpoint returns and object with 'results' key.
 ## Planned Components
 1. Navbar 
    - Logo
-   - Menu
+   - Responsive Menu
    - Search Icon
+   - Responsive Search barre
+
 2. Movie Card
    - Movie Poster
    - Movie Name
    - Movie Genre
    - Movie Rating
-3. Footer
+
+3. Movies List
+   - Movie Card
+   - Pagination 
+   - Filtering
+
+4. Movie Details
+   - Movie Poster
+   - Movie Name
+   - Movie Rating
+   - Movie Genre
+   - Movie Release Year
+   - Movie Length
+   - Movie Votes
+   - Movie Overview
+   - Movie Trailer Link
+   - Movie Cast Members
+   - Movie Production Companies
+
+5. Footer
    - Logo
    - Figma Link
    - Github Link
