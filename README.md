@@ -46,20 +46,23 @@ Every endpoint returns and object with 'results' key.
    - Logo
    - Responsive Menu
    - Search Icon
-   - Responsive Search barre
+   - Responsive Search bar
 
-2. Movie Card
+2. Hero Section
+   - Animated Text
+
+3. Movie Card
    - Movie Poster
    - Movie Name
    - Movie Genre
    - Movie Rating
 
-3. Movies List
+4. Movies List
    - Movie Card
    - Pagination 
    - Filtering
 
-4. Movie Details
+5. Movie Details
    - Movie Poster
    - Movie Name
    - Movie Rating
@@ -72,7 +75,7 @@ Every endpoint returns and object with 'results' key.
    - Movie Cast Members
    - Movie Production Companies
 
-5. Footer
+6. Footer
    - Logo
    - Figma Link
    - Github Link
