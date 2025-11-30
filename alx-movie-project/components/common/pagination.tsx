@@ -11,7 +11,7 @@ const Pagination: React.FC<PaginationProps> = ({
     currentPage,
     totalPages,
     onPageChange,
-    maxPageNumbersToShow = 4,
+    maxPageNumbersToShow = 3,
 }) => {
     const pageNumbers: (number | "...")[] = [];
     const halfLimit = Math.floor(maxPageNumbersToShow / 2);
