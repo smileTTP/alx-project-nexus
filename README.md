@@ -29,6 +29,9 @@ Every endpoint returns and object with 'results' key.
 | /movie/{movie_id}/videos | GET | Get Movie Trailer. |
 | /movie/{movie_id}/credits | GET | Get Movie Credits. |
 
+## User-Friendly Design 
+[figma file](https://www.figma.com/design/mA4c8IaTeAJ078itSbUUkG/alx-nexus-project-movie-website?node-id=0-1&t=aqDdvFKJ2Dj7x6nB-1)
+
 ## Color Styles
 - Primary Color #591427
 - Secondary Color #4C3A51
