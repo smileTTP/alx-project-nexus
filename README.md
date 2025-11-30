@@ -55,18 +55,24 @@ Every endpoint returns and object with 'results' key.
 2. Hero Section
    - Animated Text
 
-3. Movie Card
+3. Dashboard (Home Page)
+   - Favorites Widget (Horizonatl Scroll)
+   - Trending Movies Widget (Horizonatl Scroll)
+   - Recommendations Widget (Horizonatl Scroll)
+   - Upcoming Movies Widget (Horizonatl Scroll)
+
+4. Movie Card
    - Movie Poster
    - Movie Name
    - Movie Genre
    - Movie Rating
 
-4. Movies List
+5. Movies List
    - Movie Card
    - Pagination 
    - Filtering
 
-5. Movie Details
+6. Movie Details
    - Movie backdrop
    - Movie Poster
    - Movie Name
@@ -79,8 +85,12 @@ Every endpoint returns and object with 'results' key.
    - Movie Trailer Link
    - Movie Cast Members
    - Movie Production Companies
+   - Favorite Button
 
-6. Footer
+7. Login Page
+   - Redirect to TMDB page to approve and then back to home page.
+     
+8. Footer
    - Logo
    - Figma Link
    - Github Link
