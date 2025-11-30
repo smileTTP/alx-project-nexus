@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { CiSearch } from "react-icons/ci";
+import { IoSearchOutline } from "react-icons/io5";
 import { IoIosMenu, IoIosClose, IoIosArrowDown } from "react-icons/io";
 import { FiLoader } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
@@ -172,7 +172,7 @@ const Header: React.FC = () => {
                 {isSearchOpen ? (
                 <IoIosClose className="text-[#4C3A51] text-5xl" />
                 ) : (
-                <CiSearch className="text-[#4C3A51] text-4xl" />
+                <IoSearchOutline className="text-[#4C3A51] text-4xl" />
                 )}
                 </button>
                 <button onClick={toggleMenu} className="md:hidden text-[#4C3A51] focus:outline-none">
@@ -228,7 +228,7 @@ const Header: React.FC = () => {
             <div className="relative w-full max-w-3xl">
             <input type="text" placeholder="Search for a movie" className="w-full p-3 pl-4 rounded-full border-2 border-[#4C3A51] bg-[#f1d7de] text-[#4C3A51] text-xl" value={query} onChange={handleChange} autoFocus/>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[#4C3A51] text-3xl">
-                {isLoading ? <FiLoader className="w-6 h-6 animate-spin" /> : <CiSearch className="w-6 h-6" />}
+                {isLoading ? <FiLoader className="w-6 h-6 animate-spin" /> : <IoSearchOutline className="w-6 h-6" />}
             </div>
 
             {suggestions.length > 0 && (

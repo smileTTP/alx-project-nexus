@@ -3,6 +3,11 @@ import Image from 'next/image';
 import { Black_Han_Sans } from 'next/font/google';
 import { MdOutlineOndemandVideo } from "react-icons/md";
 import { MovieDetails, Cast } from '@/interfaces'; 
+import { useRouter } from 'next/router';
+import { useAuth } from '@/context/AuthContext';
+import useToggleFavorite from '@/hooks/useToggleFav';
+import { FiLoader } from "react-icons/fi";
+import { FaHeart } from 'react-icons/fa';
 
 const blackhansans = Black_Han_Sans({ 
     weight: ['400'] 
@@ -15,7 +20,17 @@ interface MovieDetailsProps {
 }
 
 const Movie: React.FC<MovieDetailsProps> = ({ movie, trailerKey, cast }) => {
+    const router = useRouter();
+    const { isAuthenticated, sessionId, accountId } = useAuth();
     
+    const { 
+        isFavorite, 
+        loading: toggleLoading, 
+        statusLoading, 
+        toggleStatus, 
+        error: favoriteError 
+    } = useToggleFavorite(movie.id, accountId, sessionId);
+
     const runtimeMinutes = movie.runtime || 0;
     const hours = Math.floor(runtimeMinutes / 60);
     const minutes = runtimeMinutes % 60;
@@ -37,6 +52,15 @@ const Movie: React.FC<MovieDetailsProps> = ({ movie, trailerKey, cast }) => {
         }
     };
 
+    const handleFavoriteClick = async () => {
+        if (!isAuthenticated) {
+            router.push('/user/login'); 
+            return;
+        }
+        
+        await toggleStatus(isFavorite);
+    };
+
     return (
     <div className="min-h-screen bg-[#4C3A51] text-[#f1d7de]">
         <div className="relative h-60 sm:h-9 md:h-[480px] w-full bg-cover bg-center" style={{ backgroundImage: `url(${backdropUrl})` }}>
@@ -46,6 +70,27 @@ const Movie: React.FC<MovieDetailsProps> = ({ movie, trailerKey, cast }) => {
             <div className="bg-transparent flex flex-col md:flex-row gap-6 sm:gap-8 pt-4 pb-6 sm:pt-6 sm:pb-8 rounded-b-lg ">
                 <div className="flex-none w-full max-w-60 sm:max-w-[300px] mx-auto md:mx-0 flex flex-col items-center">
                     <Image src={posterUrl} alt={movie.title || 'Movie Poster'} width={300} height={450} className="w-full object-cover rounded-[10px]" quality={90}/>
+                    <button 
+                        onClick={handleFavoriteClick} 
+                        disabled={statusLoading || toggleLoading}
+                        className={`mt-4 flex items-center justify-center w-full py-3 px-6 text-[#f1d7de] font-bold rounded-lg shadow-md transition duration-300 transform hover:scale-105 border-2 
+                            ${(statusLoading || toggleLoading) 
+                                ? 'bg-gray-500 border-gray-500 cursor-not-allowed' 
+                                : isFavorite 
+                                    ? 'bg-[#D27C91] border-[#D27C91] hover:bg-[#a86376]' 
+                                    : 'bg-transparent border-[#D27C91] hover:bg-[#D27C91]'
+                            }`}
+                        aria-label={isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}>
+                        {(statusLoading || toggleLoading) ? (
+                            <FiLoader  className="w-5 h-5 animate-spin mr-2" />
+                        ) : (
+                            <FaHeart  className={`w-5 h-5 mr-2 ${isFavorite ? 'text-[#96D9C0]' : 'text-white'}`} />
+                        )}
+                        {isAuthenticated 
+                            ? (isFavorite ? 'Favorited' : 'Add to Favorites')
+                            : 'Log In to Favorite'
+                        }
+                    </button>
                     {trailerKey && (
                         <button onClick={handleWatchTrailer} className="mt-4 flex items-center justify-center w-full py-3 px-6 bg-[#f1d7de] text-[#4C3A51] font-bold rounded-lg shadow-md hover:bg-[#e0c4ce] transition duration-300 transform hover:scale-105">
                         <span className="mr-2"><MdOutlineOndemandVideo className="text-xl" /></span> 

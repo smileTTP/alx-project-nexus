@@ -1,4 +1,4 @@
-import { CiLogin } from "react-icons/ci";
+import { IoEnter } from "react-icons/io5";
 import { SiThemoviedatabase } from "react-icons/si";
 import useTmdbAuth from "@/hooks/useTmdbAuth";
 
@@ -20,7 +20,7 @@ const Login: React.FC = () => {
         <div className="flex items-center justify-center min-h-screen w-full p-4">
         <div className="p-8 bg-[#f1d7de] rounded-xl shadow-2xl border-4 border-[#4C3A51] max-w-md mx-auto">
             <h2 className="text-3xl font-bold text-[#4C3A51] mb-4 flex items-center gap-3">
-                <CiLogin className="text-3xl"/> Log in to TMDB
+                <IoEnter className="text-3xl"/> Log in to TMDB
             </h2>
             <p className="text-[#591427] mb-6">
                 To access features like favorites list, you need to link your TMDB account.
