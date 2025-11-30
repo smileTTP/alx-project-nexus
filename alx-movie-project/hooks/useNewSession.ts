@@ -50,7 +50,7 @@ const useNewSession = () => {
             
         } catch (error) {
             console.error("Authentication Finalization Error:", error);
-            router.push('/login'); 
+            router.push('/user/login'); 
         }
     }, [API_KEY, setAuthData, fetchAccountId, router]);
 
