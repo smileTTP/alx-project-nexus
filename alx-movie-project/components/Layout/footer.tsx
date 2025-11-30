@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 
 const Footer: React.FC = () => {
@@ -8,7 +7,7 @@ const Footer: React.FC = () => {
             <div className="bg-[#D27C91]">
             <div className="h-[200px] flex space-x-10 justify-center items-center">
                 <Image src={'/assets/LOGO.svg'} alt="PELLICLA" height={50} width={300} className="w-[150px] md:w-[300px] h-[50px]"/>
-                <a href="https://figma.com" rel="figma">
+                <a href="https://www.figma.com/design/mA4c8IaTeAJ078itSbUUkG/alx-nexus-project-movie-website?node-id=0-1&t=aqDdvFKJ2Dj7x6nB-1" rel="figma">
                 <Image src={'/assets/figma.svg'} alt="figma" width={40} height={60} className="w-4 md:w-10 h-[60px]"/>
                 </a>
                 <a href="https://github.com/smileTTP" rel="github">
