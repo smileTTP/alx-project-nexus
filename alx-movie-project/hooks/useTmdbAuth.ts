@@ -1,7 +1,7 @@
 import { API_KEY } from "@/constants";
 import { useCallback, useEffect, useState } from "react";
 
-const REDIRECT_PAGE = "http://localhost:3000/";
+const REDIRECT_PAGE = "https://picturamovens.vercel.app/";
 const useTmdbAuth = () => {
     const [newToken, setNewToken] = useState<string | null>(null);
     const [redirectUrl, setRedirectUrl] = useState<string | null>(null);
