@@ -16,10 +16,10 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, genreMap, className = '' }
     const genres = genreNames.join(', ');
     
     return (
-        <div className={`w-[168.5px] h-[302px] bg-[#4C3A51] rounded-[10px] mt-4 shadow-inner shadow-[#f1d7de]/15 ${className}`}>
+        <div className={`w-[168.5px] h-[302px] bg-[#4C3A51] rounded-[10px] mt-4 shadow-inner shadow-[#f1d7de]/15 ${className} hover:bg-[#8080FF]/40 transition duration-300 transform hover:scale-105`}>
             <Link href={`/movie/${movie.id}`}>
             <div className="flex justify-center">                
-            <Image unoptimized={true} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://placehold.co/30x40/4C3A51/f1d7de?text=No+Img'} alt="movie card" width={151} height={223} className="mt-4" />
+            <Image unoptimized={true} src={movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : 'https://placehold.co/30x40/4C3A51/f1d7de?text=No+Img'} alt="movie card" width={151} height={223} className="mt-4 rounded-[10px]" />
             </div>
             <div className="px-2 mt-2">
             <p className="text-[#96D9C0] font-bold text-base overflow-hidden whitespace-nowrap text-ellipsis ">{movie.title}</p>
