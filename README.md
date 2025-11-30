@@ -29,7 +29,7 @@ Every endpoint returns and object with 'results' key.
 | /movie/{movie_id}/videos | GET | Get Movie Trailer. |
 | /movie/{movie_id}/credits | GET | Get Movie Credits. |
 | /authentication/token/new | GET | Create Request Token |
-| /authenticate/{REQUEST_TOKEN}?redirect_to={REDIRECT_PAGE} | Ask the user for permission and then redirect to the app after approval |
+| /authenticate/{REQUEST_TOKEN}?redirect_to={REDIRECT_PAGE} | GET | Ask the user for permission and then redirect to the app after approval |
 | /authentication/session/new | POST | Create New Session | 
 
 ## User-Friendly Design 
