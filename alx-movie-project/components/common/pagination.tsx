@@ -46,7 +46,7 @@ const Pagination: React.FC<PaginationProps> = ({
     const activeClasses = `${baseClasses} bg-[#4C3A51] text-[#f1d7de] border-[#4C3A51] hover:bg-[#4C3A51] hover:border-[#4C3A51]`;
     const inactiveClasses = `${baseClasses} bg-[#f1d7de] text-[#4C3A51] border-[#4C3A51] hover:bg-[#4C3A51] hover:text-[#f1d7de]`;
     const disabledClasses = `${baseClasses} bg-[#f1d7de] text-[#4C3A51] border-[#4C3A51] opacity-50 cursor-not-allowed`;
-    const dotsClasses = "mx-1 px-3 py-1 text-[#f1d7de]";
+    const dotsClasses = "mx-1 px-2 py-1 text-[#f1d7de]";
 
     return (
         <div className="flex justify-center items-center my-8">
