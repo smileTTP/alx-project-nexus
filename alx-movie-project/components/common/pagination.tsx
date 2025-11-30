@@ -11,7 +11,7 @@ const Pagination: React.FC<PaginationProps> = ({
     currentPage,
     totalPages,
     onPageChange,
-    maxPageNumbersToShow = 5,
+    maxPageNumbersToShow = 4,
 }) => {
     const pageNumbers: (number | "...")[] = [];
     const halfLimit = Math.floor(maxPageNumbersToShow / 2);
@@ -42,7 +42,7 @@ const Pagination: React.FC<PaginationProps> = ({
         pageNumbers.push(totalPages);
     }
 
-    const baseClasses = "mx-1 px-1 py-1 border-2 rounded-[10px] transition duration-200";
+    const baseClasses = "mx-1 px-3 py-1 border-2 rounded-[10px] transition duration-200";
     const activeClasses = `${baseClasses} bg-[#4C3A51] text-[#f1d7de] border-[#4C3A51] hover:bg-[#4C3A51] hover:border-[#4C3A51]`;
     const inactiveClasses = `${baseClasses} bg-[#f1d7de] text-[#4C3A51] border-[#4C3A51] hover:bg-[#4C3A51] hover:text-[#f1d7de]`;
     const disabledClasses = `${baseClasses} bg-[#f1d7de] text-[#4C3A51] border-[#4C3A51] opacity-50 cursor-not-allowed`;
