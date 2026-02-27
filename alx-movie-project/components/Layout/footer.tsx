@@ -13,9 +13,6 @@ const Footer: React.FC = () => {
                 <a href="https://github.com/smileTTP" rel="github">
                 <Image src={'/assets/github.svg'} alt="figma" width={55} height={80} className="w-6 md:w-[55px] h-20"/>
                 </a>
-                <a href="https://x.com/l2mongr4ss_" rel="github">
-                <Image src={'/assets/twitter.svg'} alt="figma" width={55} height={80} className="w-6 md:w-[55px] h-20"/>
-                </a>
             </div>
             <br/>
             <hr className="text-[#7B1B38]"/>
